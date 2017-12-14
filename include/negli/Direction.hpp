@@ -9,58 +9,58 @@
 #include <Position>
 
 namespace negli {
-  class Direction
-  {
-  public:
-    public Direction* up()
-    {
-        if(UP == NULL)
+	class Direction
+	{
+	public:
+		Direction* up()
+		{
+			if(UP == NULL)
             UP = new Direction(UP_VECTOR);
-        return UP;
-    }
+			return UP;
+		}
 
-    public Direction* left()
-    {
-        if(LEFT == NULL)
-            LEFT = new Direction(LEFT_VECTOR);
-        return LEFT;
-    }
+		Direction* left()
+		{
+			if(LEFT == NULL)
+			LEFT = new Direction(LEFT_VECTOR);
+			return LEFT;
+		}
 
-    public Direction* down()
-    {
-        if(DOWN == NULL)
-            DOWN = new Direction(DOWN_VECTOR);
-        return DOWN;
-    }
+		Direction* down()
+		{
+			if(DOWN == NULL)
+			DOWN = new Direction(DOWN_VECTOR);
+			return DOWN;
+		}
 
-    public Direction* right()
-    {
-        if(RIGHT == NULL)
+		Direction* right()
+		{
+			if(RIGHT == NULL)
             RIGHT = new Direction(RIGHT_VECTOR);
-        return RIGHT;
-    }
+			return RIGHT;
+		}
 
-    static void destructInstances()
-    {
-        delete up();
-        delete left();
-        delete down();
-        delete right();
-    }
+		static void destructInstances()
+		{
+			delete up();
+			delete left();
+			delete down();
+			delete right();
+		}
 
-  private:
-    static Direction* UP;
-    static Direction* LEFT;
-    static Direction* DOWN;
-    static Direction* RIGHT;
+	private:
+		static Direction* UP;
+		static Direction* LEFT;
+		static Direction* DOWN;
+		static Direction* RIGHT;
 
-    Position vector;
+		Position vector;
 
-    Direction(int vect_x, int vect_y)
-    {
-      vector = Position(vect_x, vect_y);
-    }
+		Direction(int vect_x, int vect_y)
+		{
+			vector = Position(vect_x, vect_y);
+		}
 
-    ~Direction() {}
+		~Direction() {}
 }
 #endif
