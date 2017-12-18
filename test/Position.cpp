@@ -13,7 +13,3 @@ Context(A_newly_constructed_Position)
     }
 };
 
-int main(int argc, char *argv[])
-{
-    return TestRunner::RunAllTests(argc, argv);
-}
