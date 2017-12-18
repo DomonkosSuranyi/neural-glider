@@ -10,6 +10,7 @@ Context(The_instances_of_Direction_class)
 	{
 		Direction::destructInstances();
 	}
+
 	Spec(Should_be_only_one_UP_instance)
 	{
 		Direction* upInstance = Direction::up();
@@ -32,6 +33,21 @@ Context(The_instances_of_Direction_class)
 	{
 		Direction* rightInstance = Direction::right();
 		Assert::That(rightInstance, Equals(Direction::right()));
+	}
+
+	Spec(Should_have_fixed_Position)
+	{
+		Assert::That(Direction::up()->vector.x, Equals(0));
+		Assert::That(Direction::up()->vector.y, Equals(-1));
+
+		Assert::That(Direction::left()->vector.x, Equals(-1));
+		Assert::That(Direction::left()->vector.y, Equals(0));
+
+		Assert::That(Direction::down()->vector.x, Equals(0));
+		Assert::That(Direction::down()->vector.y, Equals(1));
+
+		Assert::That(Direction::right()->vector.x, Equals(1));
+		Assert::That(Direction::right()->vector.y, Equals(0));
 	}
 };
 
