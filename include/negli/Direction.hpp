@@ -6,47 +6,24 @@
 #define DOWN_VECTOR  0,1
 #define RIGHT_VECTOR 1,0
 
-#include <Position>
+#include "Position.hpp"
 
 namespace negli {
 	class Direction
 	{
 	public:
-		Direction* up()
-		{
-			if(UP == NULL)
-            UP = new Direction(UP_VECTOR);
-			return UP;
-		}
 
-		Direction* left()
-		{
-			if(LEFT == NULL)
-			LEFT = new Direction(LEFT_VECTOR);
-			return LEFT;
-		}
+		Position vector;
 
-		Direction* down()
-		{
-			if(DOWN == NULL)
-			DOWN = new Direction(DOWN_VECTOR);
-			return DOWN;
-		}
+		static Direction* up();
 
-		Direction* right()
-		{
-			if(RIGHT == NULL)
-            RIGHT = new Direction(RIGHT_VECTOR);
-			return RIGHT;
-		}
+		static Direction* left();
 
-		static void destructInstances()
-		{
-			delete up();
-			delete left();
-			delete down();
-			delete right();
-		}
+		static Direction* down();
+
+		static Direction* right();
+
+		static void destructInstances();
 
 	private:
 		static Direction* UP;
@@ -54,13 +31,9 @@ namespace negli {
 		static Direction* DOWN;
 		static Direction* RIGHT;
 
-		Position vector;
-
-		Direction(int vect_x, int vect_y)
-		{
-			vector = Position(vect_x, vect_y);
-		}
+		Direction(int vect_x, int vect_y) : vector(vect_x, vect_y) {}
 
 		~Direction() {}
+	};
 }
 #endif
