@@ -4,12 +4,34 @@
 using namespace igloo;
 using negli::Direction;
 
-Context(The_UP_instance_of_Direction_class)
+Context(The_instances_of_Direction_class)
 {
-	Spec(Should_be_the_only_UP_instance)
+	static void TearDownContext()
+	{
+		Direction::destructInstances();
+	}
+	Spec(Should_be_only_one_UP_instance)
 	{
 		Direction* upInstance = Direction::up();
 		Assert::That(upInstance, Equals(Direction::up()));
-		Direction::destructInstances();
+	}
+
+	Spec(Should_be_only_one_LEFT_instance)
+	{
+		Direction* leftInstance = Direction::left();
+		Assert::That(leftInstance, Equals(Direction::left()));
+	}
+
+	Spec(Should_be_only_one_DOWN_instance)
+	{
+		Direction* downInstance = Direction::down();
+		Assert::That(downInstance, Equals(Direction::down()));
+	}
+
+	Spec(Should_be_only_one_RIGHT_instance)
+	{
+		Direction* rightInstance = Direction::right();
+		Assert::That(rightInstance, Equals(Direction::right()));
 	}
 };
+
