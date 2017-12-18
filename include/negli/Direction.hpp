@@ -13,7 +13,7 @@ namespace negli {
 	{
 	public:
 
-		Position vector;
+		const Position vector;
 
 		static Direction* up();
 
