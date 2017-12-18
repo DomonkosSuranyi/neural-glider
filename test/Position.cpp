@@ -13,3 +13,15 @@ Context(A_newly_constructed_Position)
     }
 };
 
+Context(The_plusequals_operator)
+{
+	Spec(Should_add_the_coordinates)
+	{
+		negli::Position pos = negli::Position(5,-3);
+		negli::Position pos1 = negli::Position(-5,3);
+
+		pos += pos1;
+		Assert::That(pos.x, Equals(0));
+		Assert::That(pos.y, Equals(0));
+	}
+};
