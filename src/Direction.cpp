@@ -2,44 +2,47 @@
 
 using negli::Direction;
 
-Direction* Direction::UP = nullptr;
-Direction* Direction::LEFT = nullptr;
-Direction* Direction::DOWN = nullptr;
-Direction* Direction::RIGHT = nullptr;
+Direction Direction::UP = Direction(UP_VECTOR,
+		&Direction::RIGHT, &Direction::LEFT);
+Direction Direction::LEFT = Direction(LEFT_VECTOR,
+		&Direction::UP, &Direction::DOWN);
+Direction Direction::DOWN = Direction(DOWN_VECTOR,
+		&Direction::LEFT, &Direction::RIGHT);
+Direction Direction::RIGHT = Direction(RIGHT_VECTOR,
+		&Direction::DOWN, &Direction::UP);
 
 Direction* Direction::up()
 {
-	if(Direction::UP == nullptr)
-		Direction::UP = new Direction(UP_VECTOR);
-	return Direction::UP;
+	return &Direction::UP;
 }
 
 Direction* Direction::left()
 {
-	if(Direction::LEFT == nullptr)
-	Direction::LEFT = new Direction(LEFT_VECTOR);
-	return Direction::LEFT;
+	return &Direction::LEFT;
 }
 
 Direction* Direction::down()
 {
-	if(Direction::DOWN == nullptr)
-	Direction::DOWN = new Direction(DOWN_VECTOR);
-	return Direction::DOWN;
+	return &Direction::DOWN;
 }
 
 Direction* Direction::right()
 {
-	if(Direction::RIGHT == nullptr)
-	Direction::RIGHT = new Direction(RIGHT_VECTOR);
-	return Direction::RIGHT;
+	return &Direction::RIGHT;
 }
 
-void Direction::destructInstances()
+Direction* Direction::turnLeft(Direction* dir)
 {
-	delete Direction::up();
-	delete Direction::left();
-	delete Direction::down();
-	delete Direction::right();
+	dir = dir->ccwNext;
+	return dir;
 }
 
+Direction* Direction::turnRight(Direction* dir)
+{
+	dir = dir-> cwNext;
+	return dir;
+}
+
+void Direction::constructInstances()
+{
+}
