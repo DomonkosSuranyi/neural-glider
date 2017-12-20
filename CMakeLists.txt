@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 2.8.8)
 project(negli)
 
-set(CMAKE_C_COMPILER "clang")
-set(CMAKE_CXX_COMPILER "clang++")
+#set(CMAKE_C_COMPILER "clang")
+#set(CMAKE_CXX_COMPILER "clang++")
 message("--> CXX: ${CMAKE_CXX_COMPILER}")
 
 include_directories(include)
