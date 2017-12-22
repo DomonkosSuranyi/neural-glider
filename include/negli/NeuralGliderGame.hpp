@@ -5,13 +5,14 @@
 #include "Apple.hpp"
 #include <map>
 #include <vector>
+#include "AreaPrinter.hpp"
 
 namespace negli
 {
 	class NeuralGliderGame
 	{
 	public:
-		NeuralGliderGame(int,int,int,int);
+		NeuralGliderGame(int,int,int,int,AreaPrinter&);
 
 		~NeuralGliderGame();
 
@@ -24,6 +25,8 @@ namespace negli
 		const int numberOfApples;
 		std::vector<Glider*> gliders;
 		std::vector<Apple*> apples;
+
+		AreaPrinter* printer;
 
 		Direction* getRandomDirection();
 	};

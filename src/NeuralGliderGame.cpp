@@ -13,9 +13,11 @@ class InvalidNumberGenerated : public std::exception
 	}
 } ingex;
 
-NeuralGliderGame::NeuralGliderGame(int x, int y, int glidernum, int applenum)
-	: mapSize(x,y), numberOfGliders(glidernum), numberOfApples(applenum)
+NeuralGliderGame::NeuralGliderGame(int x, int y, int glidernum, int applenum, AreaPrinter& printer)
+	: mapSize(x,y), numberOfGliders(glidernum), numberOfApples(applenum) 
 {
+	this->printer = &printer;
+	this->printer->resetMap(this->mapSize);
 	for(int i = 0 ; i < glidernum ; ++i)
 	{
 		this->gliders.push_back(new Glider(rand() % x, rand() % y, getRandomDirection()));
@@ -25,9 +27,14 @@ NeuralGliderGame::NeuralGliderGame(int x, int y, int glidernum, int applenum)
 	{
 		this->apples.push_back(new Apple(rand() % x, rand() % y));
 	}
+	this->printer->prepareGliders(gliders);
+	this->printer->print();
 }
 
-NeuralGliderGame::~NeuralGliderGame() {}
+NeuralGliderGame::~NeuralGliderGame()
+{
+	delete this->printer;
+}
 
 int NeuralGliderGame::getNumberOfGliders()
 {
