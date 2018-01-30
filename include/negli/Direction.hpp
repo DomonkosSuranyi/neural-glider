@@ -12,35 +12,35 @@ namespace negli {
 	class Direction
 	{
 	public:
-		static Direction* up();
+		static const Direction& up();
 
-		static Direction* left();
+		static const Direction& left();
 
-		static Direction* down();
+		static const Direction& down();
 
-		static Direction* right();
+		static const Direction& right();
 
-		static Direction* turnLeft(Direction*);
+		const Direction& turnLeft() const;
 
-		static Direction* turnRight(Direction*);
+		const Direction& turnRight() const;
 
 		const Position vector;
 
 		~Direction() {}
 
 	private:
-		Direction* cwNext;
-		Direction* ccwNext;
+		const Direction& cwNext;
+		const Direction& ccwNext;
 
-		static Direction UP;
-		static Direction LEFT;
-		static Direction DOWN;
-		static Direction RIGHT;
+		static const Direction UP;
+		static const Direction LEFT;
+		static const Direction DOWN;
+		static const Direction RIGHT;
 
-		Direction(int vect_x, int vect_y, Direction* cw, Direction* ccw)
+		Direction(int vect_x, int vect_y, const Direction& cw, const Direction& ccw)
 		  : vector(vect_x, vect_y) , cwNext(cw), ccwNext(ccw) {}
 
-		static void constructInstances();
 	};
 }
 #endif
+

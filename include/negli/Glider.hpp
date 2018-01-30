@@ -10,17 +10,17 @@ namespace negli {
 	{
 	public:
 
-		Glider(int, int, Direction*);
+		Glider(int, int, const Direction&);
 		~Glider();
 
 		void stepForward();
 		void turnLeft();
 		void turnRight();
-		Direction* getDirection();
+		const Direction& getDirection();
 
 	private:
 
-		Direction* direction;
+		const Direction* direction;
   };
 }
 #endif

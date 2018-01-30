@@ -25,7 +25,7 @@ namespace negli
 		std::vector<Glider*> gliders;
 		std::vector<Apple*> apples;
 
-		Direction* getRandomDirection();
+		const Direction& getRandomDirection();
 	};
 }
 #endif
