@@ -5,13 +5,13 @@
 
 namespace negli
 {
-	class Object {
-	public:
-		Position pos;
+    class Object {
+    public:
+        Position pos;
 
-		Object(int x, int y) : pos(x,y) {}
-		~Object() {}
-	};
+        Object(int x, int y) : pos(x,y) {}
+        ~Object() {}
+    };
 }
 #endif
 

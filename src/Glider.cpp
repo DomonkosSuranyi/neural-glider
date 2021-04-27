@@ -2,26 +2,26 @@
 
 using namespace negli;
 
-Glider::Glider(int x, int y, Direction* initDir) : Object(x,y), direction(initDir) {}
+Glider::Glider(int x, int y, Direction initDir) : Object(x,y), direction(initDir) {}
 
 Glider::~Glider() {}
 
 void Glider::stepForward()
 {
-	this->pos += this->direction->vector;
+    this->pos += asVelocity(this->direction);
 }
 
 void Glider::turnLeft()
 {
-	this->direction = Direction::turnLeft(this->direction);
+    this->direction = turnCounterClockwise(this->direction);
 }
 
 void Glider::turnRight()
 {
-	this->direction = Direction::turnRight(this->direction);
+    this->direction = turnClockwise(this->direction);
 }
 
-Direction* Glider::getDirection()
+const Direction Glider::getDirection()
 {
-	return this->direction;
+    return this->direction;
 }

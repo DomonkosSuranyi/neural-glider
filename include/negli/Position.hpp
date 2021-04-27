@@ -10,12 +10,12 @@ namespace negli {
         Position(int p_x, int p_y) : x(p_x), y(p_y) {}
         ~Position() {}
 
-		Position& operator+=(const Position& posToAdd)
-		{
-			this->x += posToAdd.x;
-			this->y += posToAdd.y;
-			return *this;
-		}
+        Position operator+=(const Position& posToAdd)
+        {
+            this->x += posToAdd.x;
+            this->y += posToAdd.y;
+            return *this;
+        }
     };
 }
 #endif

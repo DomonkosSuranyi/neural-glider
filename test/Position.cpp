@@ -1,27 +1,22 @@
 #include <negli/Position.hpp>
-#include <igloo/igloo.h>
+#include "catch.hpp"
 
-using namespace igloo;
+using namespace negli;
 
-Context(A_newly_constructed_Position)
+TEST_CASE("Constructor", "[position]")
 {
-    Spec(Should_have_x_and_y_coordinates)
-    {
-        negli::Position pos = negli::Position(2,9);
-        Assert::That(pos.x, Equals(2));
-        Assert::That(pos.y, Equals(9));
-    }
-};
+    Position pos = Position(2, 9);
+    REQUIRE(pos.x == 2);
+    REQUIRE(pos.y == 9);
+}
 
-Context(The_plusequals_operator)
+TEST_CASE("+=", "[position]")
 {
-	Spec(Should_add_the_coordinates)
-	{
-		negli::Position pos = negli::Position(5,-3);
-		negli::Position pos1 = negli::Position(-5,3);
+    Position pos = Position(5, -3);
+    Position toAdd = Position(-5, 3);
 
-		pos += pos1;
-		Assert::That(pos.x, Equals(0));
-		Assert::That(pos.y, Equals(0));
-	}
-};
+    pos += toAdd;
+    REQUIRE(pos.x == 0);
+    REQUIRE(pos.y == 0);
+}
+

@@ -1,48 +1,30 @@
 #include <negli/Direction.hpp>
 
-using negli::Direction;
+namespace negli {
+    Direction turnClockwise(const Direction original)
+    {
+        return static_cast<Direction>((static_cast<int>(original) + 5) % 4);
+    }
 
-Direction Direction::UP = Direction(UP_VECTOR,
-		&Direction::RIGHT, &Direction::LEFT);
-Direction Direction::LEFT = Direction(LEFT_VECTOR,
-		&Direction::UP, &Direction::DOWN);
-Direction Direction::DOWN = Direction(DOWN_VECTOR,
-		&Direction::LEFT, &Direction::RIGHT);
-Direction Direction::RIGHT = Direction(RIGHT_VECTOR,
-		&Direction::DOWN, &Direction::UP);
+    Direction turnCounterClockwise(const Direction original)
+    {
+        return static_cast<Direction>((static_cast<int>(original) + 3) % 4);
+    }
 
-Direction* Direction::up()
-{
-	return &Direction::UP;
-}
+    Position asVelocity(const Direction direction)
+    {
+        switch(direction)
+        {
+        case Direction::UP:
+            return Position(0, -1);
+        case Direction::RIGHT:
+            return Position(1, 0);
+        case Direction::DOWN:
+            return Position(0, 1);
+        case Direction::LEFT:
+            return Position(-1, 0);
+        }
 
-Direction* Direction::left()
-{
-	return &Direction::LEFT;
-}
-
-Direction* Direction::down()
-{
-	return &Direction::DOWN;
-}
-
-Direction* Direction::right()
-{
-	return &Direction::RIGHT;
-}
-
-Direction* Direction::turnLeft(Direction* dir)
-{
-	dir = dir->ccwNext;
-	return dir;
-}
-
-Direction* Direction::turnRight(Direction* dir)
-{
-	dir = dir-> cwNext;
-	return dir;
-}
-
-void Direction::constructInstances()
-{
+        throw "Invalid direction";
+    }
 }

@@ -8,25 +8,23 @@
 
 namespace negli
 {
-	class NeuralGliderGame
-	{
-	public:
-		NeuralGliderGame(int,int,int,int);
+    class NeuralGliderGame
+    {
+    public:
+        NeuralGliderGame(int,int,int,int);
 
-		~NeuralGliderGame();
+        ~NeuralGliderGame();
 
-		int getNumberOfGliders();
+        const int getNumberOfGliders() const;
 
-		int getNumberOfApples();
-	private:
-		const Position mapSize;
-		const int numberOfGliders;
-		const int numberOfApples;
-		std::vector<Glider*> gliders;
-		std::vector<Apple*> apples;
-
-		const Direction& getRandomDirection();
-	};
+        const int getNumberOfApples() const;
+    private:
+        const Position mapSize;
+        const int numberOfGliders;
+        const int numberOfApples;
+        std::vector<Glider> gliders;
+        std::vector<Apple> apples;
+    };
 }
 #endif
 

@@ -1,17 +1,32 @@
-#include <igloo/igloo.h>
 #include <negli/Glider.hpp>
+#include "catch.hpp"
 
-using namespace igloo;
 using negli::Glider;
 
-Context(A_simple_glider)
+TEST_CASE("Glider ctor, position and direction", "[glider]")
 {
-	Spec(Should_have_init_position_and_direction_via_ctor)
-	{
-		Glider glider = Glider(-5,22, negli::Direction::up());
-		Assert::That(glider.pos.x, Equals(-5));
-		Assert::That(glider.pos.y, Equals(22));
-		Assert::That(glider.getDirection(), Equals(negli::Direction::up()));
-	}
+    Glider glider = Glider(-5, 22, negli::Direction::UP);
+    REQUIRE(glider.pos.x == -5);
+    REQUIRE(glider.pos.y == 22);
+    REQUIRE(glider.getDirection() == negli::Direction::UP);
+}
 
-};
+TEST_CASE("Glider rotation", "[glider]")
+{
+    Glider glider = Glider(0, 0, negli::Direction::DOWN);
+    SECTION("turn left")
+    {
+        glider.turnLeft();
+        REQUIRE(glider.getDirection() == negli::Direction::RIGHT);
+        glider.turnLeft();
+        REQUIRE(glider.getDirection() == negli::Direction::UP);
+    }
+
+    SECTION("turn right")
+    {
+        glider.turnRight();
+        REQUIRE(glider.getDirection() ==  negli::Direction::LEFT);
+        glider.turnRight();
+        REQUIRE(glider.getDirection() ==  negli::Direction::UP);
+    }
+}

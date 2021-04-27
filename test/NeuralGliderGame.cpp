@@ -1,15 +1,12 @@
-#include <igloo/igloo.h>
 #include <negli/NeuralGliderGame.hpp>
+#include "catch.hpp"
 
-using namespace igloo;
-using negli::NeuralGliderGame;
+using namespace negli;
 
-Context(The_ctor_of_the_class_NeuralGliderGame)
+TEST_CASE("NeuralGliderGame ctor", "[nggctor]")
 {
-	Spec(Should_generate_specific_number_of_gliders_and_apples)
-	{
-		negli::NeuralGliderGame ngg = NeuralGliderGame(100,100,5,2);
-		Assert::That(ngg.getNumberOfGliders(), Equals(5));
-		Assert::That(ngg.getNumberOfApples(),  Equals(2));
-	}
-};
+    NeuralGliderGame ngg = NeuralGliderGame(100, 100, 5, 2);
+    REQUIRE(ngg.getNumberOfGliders() == 5);
+    REQUIRE(ngg.getNumberOfApples() == 2);
+}
+
