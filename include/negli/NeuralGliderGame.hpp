@@ -3,11 +3,20 @@
 
 #include "Glider.hpp"
 #include "Apple.hpp"
-#include <map>
 #include <vector>
 
 namespace negli
 {
+    enum Tile
+    {
+        EMPTY,
+        APPLE,
+        GLIDER_UP,
+        GLIDER_RIGHT,
+        GLIDER_DOWN,
+        GLIDER_LEFT,
+    };
+
     class NeuralGliderGame
     {
     public:
@@ -18,10 +27,11 @@ namespace negli
         const int getNumberOfGliders() const;
 
         const int getNumberOfApples() const;
-    private:
+
+        const std::vector<std::vector<Tile>> getTileMatrix() const;
+
         const Position mapSize;
-        const int numberOfGliders;
-        const int numberOfApples;
+    private:
         std::vector<Glider> gliders;
         std::vector<Apple> apples;
     };
